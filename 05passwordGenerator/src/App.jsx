@@ -1,32 +1,47 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 import "./App.css";
 
 function App() {
   const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
-  const [charAllowed, setCharAllowed] = useState(false);
+  const [splCharAllowed, setSplCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
+  const [copyButtonText, setCopyButtonText] = useState("Copy"); // New state for button text
+  const passwordSelect = useRef(null);
 
   const generatePassword = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     if (numberAllowed) str += "0123456789";
-    if (charAllowed) str += "!@#$%&*()_+";
+    if (splCharAllowed) str += "!@#$%&*()_+";
 
     for (let i = 0; i < length; i++) {
-      const char = Math.floor(Math.random() * str.length + 1);
-      pass += str.charAt(char);
+      const randomNumber = Math.floor(Math.random() * str.length + 1);
+      // console.log(`Random Number at index: ${i} => ${randomNumber}`);
+      // console.log(
+      //   `Character at ${randomNumber} => ${str.charAt(randomNumber)}`
+      // );
+      pass += str.charAt(randomNumber);
+      // console.log(`password at random no ${randomNumber} => ${pass}`);
     }
     setPassword(pass);
-  }, [length, numberAllowed, charAllowed]);
+  }, [length, numberAllowed, splCharAllowed]);
 
   useEffect(() => {
     generatePassword();
-  }, [length, numberAllowed, charAllowed]);
+  }, [length, numberAllowed, splCharAllowed]);
 
   const copyPasswordToClipboard = () => {
     window.navigator.clipboard.writeText(password);
+    passwordSelect.current.select(); // Highlight password generated
+    //passwordSelect.current.setSelectionRange(0, 9999); // Ensure full selection (for mobile)
+
+    setCopyButtonText("Copied!"); // Change button text to "Copied!"
+
+    setTimeout(() => {
+      setCopyButtonText("Copy"); // Revert back after 10 seconds
+    }, 10000);
   };
 
   return (
@@ -40,12 +55,13 @@ function App() {
             className="outline-none w-full py-1 px-3 bg-white text-black"
             placeholder="Password"
             readOnly
+            ref={passwordSelect}
           />
           <button
             onClick={copyPasswordToClipboard}
             className="outline-none bg-blue-400 text-white px-3 py-0.5 shrink-0"
           >
-            Copy
+            {copyButtonText}
           </button>
         </div>
         <div className="flex text-sm gap-x-2">
@@ -57,6 +73,7 @@ function App() {
               value={length}
               className="cursor-pointer"
               onChange={(e) => {
+                console.log(`The length is ${e.target.value}`);
                 setLength(e.target.value);
               }}
             />
@@ -75,12 +92,12 @@ function App() {
           <div className="flex items-center gap-x-1">
             <input
               type="checkbox"
-              defaultChecked={charAllowed}
+              defaultChecked={splCharAllowed}
               onChange={() => {
-                setCharAllowed((prev) => !prev);
+                setSplCharAllowed((prev) => !prev);
               }}
             />
-            <label htmlFor="character">Character</label>
+            <label htmlFor="character">Special character</label>
           </div>
         </div>
       </div>
