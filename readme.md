@@ -46,7 +46,8 @@ Reconciliation is the process by which React updates the real DOM in the most ef
 **Memoization:**
 Memoization is a technique to optimize performance by caching the result of a function so that the same result doesn't need to be recalculated multiple times. In React, memoization is often used with:
 
-React.memo: A higher-order component that prevents unnecessary re-renders of functional components.
-useMemo: A hook that memoizes expensive calculations in functional components.
-useCallback: A hook to memoize functions, preventing unnecessary recreations on each render.
+* React.memo: A higher-order component that prevents unnecessary re-renders of functional components.
+* useMemo: A hook that memoizes expensive calculations in functional components.
+* useCallback: A hook to memoize functions, preventing unnecessary recreations on each render.
+  
 These techniques are useful in reducing performance bottlenecks, especially in large applications with complex UIs.
