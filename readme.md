@@ -12,9 +12,9 @@ React is a JavaScript library developed by Facebook for building user interfaces
 React follows a declarative approach to building UIs, where developers describe what the UI should look like based on the state. React has a component-based structure, where the UI is divided into small, reusable components. Each component has its own state and can manage its lifecycle.
 
 **Components:** Building blocks of a React app (either functional or class-based).
-State: Represents dynamic data that changes over time.
-Props: Data passed from a parent component to a child component.
-React components are arranged in a tree-like structure, where parent components can pass data down to child components using props.
+* State: Represents dynamic data that changes over time.
+* Props: Data passed from a parent component to a child component.
+* React components are arranged in a tree-like structure, where parent components can pass data down to child components using props.
 
 **React Library:**
 The React library is focused on creating UI components and managing their state. It provides utilities like hooks, context API, and lifecycle methods to manage side effects, update the UI, and interact with external data. React is lightweight, and you can integrate it with other libraries for routing, state management, etc.
@@ -28,9 +28,9 @@ JSX gets transpiled into React.createElement calls, which React then uses to cre
 Hooks were introduced in React 16.8 to allow functional components to have state and lifecycle methods, something that was previously only possible with class components. They help make the code more concise, reusable, and easier to manage.
 
 Some common hooks are:
-useState: For managing state in a functional component.
-useEffect: For performing side effects (e.g., data fetching, subscriptions).
-useContext: For accessing context values in components.
+* useState: For managing state in a functional component.
+* useEffect: For performing side effects (e.g., data fetching, subscriptions).
+* useContext: For accessing context values in components.
 
 **Virtual DOM:**
 The Virtual DOM is a lightweight copy of the actual DOM (Document Object Model) in memory. When a component's state changes, React first updates the Virtual DOM, compares it with the previous version (using a diffing algorithm), and then efficiently updates the real DOM only where necessary.
