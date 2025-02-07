@@ -8,6 +8,8 @@ React is a JavaScript library developed by Facebook for building user interfaces
 * Install dependencies using => npm install.
 * Run the app with => npm run dev.
 
+**Documentation guide to install tailwindcss using Vite** : https://tailwindcss.com/docs/installation/using-vite
+
 **React Flow and Structure:**
 React follows a declarative approach to building UIs, where developers describe what the UI should look like based on the state. React has a component-based structure, where the UI is divided into small, reusable components. Each component has its own state and can manage its lifecycle.
 
