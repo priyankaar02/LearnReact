@@ -2,6 +2,13 @@
 
 React is a JavaScript library developed by Facebook for building user interfaces, especially for single-page applications. It helps in creating dynamic and interactive UIs with a component-based architecture. React allows for the efficient updating and rendering of components, making it easy to build scalable and maintainable applications.
 
+**Install React with Vite:**
+
+Create a project with =>  npm create vite@latest my-react-app --template react.
+Navigate to the project folder => cd my-react-app
+Install dependencies using => npm install.
+Run the app with => npm run dev.
+
 **React Flow and Structure:**
 React follows a declarative approach to building UIs, where developers describe what the UI should look like based on the state. React has a component-based structure, where the UI is divided into small, reusable components. Each component has its own state and can manage its lifecycle.
 
